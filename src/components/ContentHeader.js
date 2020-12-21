@@ -15,21 +15,22 @@ export default function ContentHeader({title,description}) {
     const classes = useStyles()
     return (
         <React.Fragment>
-               <Typography
+          {title ?  <Typography
                     className={classes.cardTitle}
                     variant="h5"
                     color="primary"
                   >
                     {title}
-                  </Typography>
+                  </Typography>  : '' }
+             
 
-                  <Typography
+             {description ? <Typography
                     className={classes.cardBody}
                     variant="body2"
                     color="textSecondary"
                   >
                     {description}
-                  </Typography>
+                  </Typography> : ''}     
         </React.Fragment>
          
         

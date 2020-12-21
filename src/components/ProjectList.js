@@ -2,80 +2,83 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  type,
+  Grid,
+  Box,
+  List,
+  ListItem,
+  Paper,
+  Button,
+  Typography
+} from "@material-ui/core";
+import YouTubeIcon from "@material-ui/icons/YouTube"
+import GitHubIcon from "@material-ui/icons/GitHub"
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import { PROJECT_TYPE } from "../data/data";
 import SectionTitle from "./SectionTitle";
 import { PROJECTS_DATA } from "../data/data";
-import ContentHeader from "./ContentHeader"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import Papper from "@material-ui/core/Paper"
-import Button from "@material-ui/core/Button"
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import GitHubIcon from '@material-ui/icons/GitHub';
-
+import ContentHeader from "./ContentHeader";
 const useStyles = makeStyles((theme) => ({
-    
-    root: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+  projectBox: {
+    paddingTop: theme.spacing(7),
+    paddingBottom: theme.spacing(7),
+    "&:last-child": {
+      paddingBottom:0
     },
-    projectBox: {
-        paddingTop:theme.spacing(5),
-        paddingBottom:theme.spacing(5),
-        [theme.breakpoints.between(0,900)]: {
-            textAlign: "center",
-          
-        },
+    [theme.breakpoints.between(0, 900)]: {
+      textAlign: "center",
+      paddingTop: theme.spacing(5),
+      paddingBottom: theme.spacing(5),
     },
-    projectGridContainer :{
-       justifyContent:'center'
+  },
+  projectGridContainer: {
+    justifyContent: "center",
+  },
+  paperGridItem: {
+    padding: "20px  15px 20px 15px",
+  },
+  projectButton: {
+    margin: "10px",
+    display: "flex",
+    alignItems: "center",
+  },
+  buttonsContainer: {
+    display: "flex",
+    marginTop: "20px",
+    flexWrap: "wrap",
+    [theme.breakpoints.between(0, 900)]: {
+      justifyContent: "center",
     },
-    paperGridItem: {
-        padding:'20px  15px 20px 15px',
-        
+  },
+  icon: {
+    marginLeft: "5px",
+  },
+  gridOrder: {
+    [theme.breakpoints.between(0, 900)]: {
+      order: "0!important",
     },
-    projectButton: {
-        margin:'10px',
-        display:'flex',
-        alignItems:'center',
-      
+  },
+  textListAlign: {
+    [theme.breakpoints.between(0, 900)]: {
+      textAlign: "center!important",
     },
-    buttonsContainer: {
-       
-        display:'flex',
-        marginTop:'20px',
-        flexWrap:'wrap',
-        [theme.breakpoints.between(0,900)]: {
-            justifyContent:'center'
-        }
-    },
-    icon: {
-        marginLeft:'5px'
-    },
-    gridOrder: {
-        [theme.breakpoints.between(0,900)]: {
-            order:'0!important'
-          },
-    },
-    textListAlign:{
-        [theme.breakpoints.between(0,900)]: {
-            textAlign:'center!important'
-          },
-    }
-  }));
-  
+  },
+}));
+
 function TabPanel(props) {
   const { value } = props;
-  const classes = useStyles()
+  const classes = useStyles();
 
-  const matches = useMediaQuery('(max-width:900px)');
-  console.log(matches)
+  const matches = useMediaQuery("(max-width:900px)");
+  console.log(matches);
   let projects;
   switch (value) {
     case 1:
@@ -103,55 +106,111 @@ function TabPanel(props) {
       id={`full-width-tabpanel-${value}`}
       aria-labelledby={`full-width-tab-${value}`}
     >
-       
-        {projects.map((p,index) => {
-           return  <Box   key={index} className={classes.projectBox}>
-         <Grid container alignItems="center"  spacing={3} className={classes.projectGridContainer} >
-         <Grid  item sm={12} md={7} lg={7} style={{order: index % 2 === 0 ? 0 : 2 }}  className={classes.gridOrder}>
-              <img alt={p.image} src={p.image} style={{width:'100%'}}/>
-          </Grid>
-          <Grid item xs={12} sm={12} md={5} lg={5} style={{order:1}} className={classes.gridOrder}>
-            <Box className={classes.paperGridItem} boxShadow={3}>
-            <ContentHeader title={p.name}  description={p.description} />
-          
-          <Typography variant="body2"
-                    color="textSecondary"  >Key Features: </Typography>
-          <List dense={false} >     
-               {p.tech.map(point => {
-                   return <ListItem key={point} alignItems="center" className={classes.textListAlign}   >
-                       <Typography variant="body2"
-                    color="textSecondary" style={{display:"block",lineHeight:2,wordWrap:'break-word',width:'100%'}}>
-                        {matches ? '' :'-'} {point}
-                       </Typography>
-                 </ListItem>
-                }
-               )  } 
-            </List>
-            <div className={classes.buttonsContainer} >
-                {p.site ?   <Button size="small" className={classes.projectButton} variant="contained" color="primary" onClick={() =>window.open(p.site)}>
-                Visit Site </Button> : ''}
-                {p.video ?   <Button size="small" className={classes.projectButton} variant="contained" color="secondary"  onClick={() =>window.open(p.video)} >
-                 Demo <YouTubeIcon className={classes.icon} />
-            </Button> :'' }
-         
-            <Button size="small" className={classes.projectButton} variant="contained"  onClick={() =>window.open(p.source)}> 
-                Code <GitHubIcon className={classes.icon}/>
-            </Button>
-            </div>
-         
-            </Box>
-        
-          </Grid>
-         
-        </Grid>;
-        </Box>
+      {projects.map((p, index) => {
+        return (
+          <Box key={index} className={classes.projectBox}>
+            <Grid
+              container
+              alignItems="center"
+              spacing={4}
+              className={classes.projectGridContainer}
+            >
+              <Grid
+                item
+                sm={12}
+                md={7}
+                lg={7}
+                style={{ order: index % 2 === 0 ? 0 : 2 }}
+                className={classes.gridOrder}
+              >
+                <img alt={p.image} src={p.image} style={{ width: "100%" }} />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={5}
+                lg={5}
+                style={{ order: 1 }}
+                className={classes.gridOrder}
+              >
+                <Box className={classes.paperGridItem} boxShadow={3}>
+                  <ContentHeader title={p.name} description={p.description} />
+
+                  <Typography variant="body2" color="textSecondary">
+                    Key Features:{" "}
+                  </Typography>
+                  <List dense={false}>
+                    {p.tech.map((point) => {
+                      return (
+                        <ListItem
+                          key={point}
+                          alignItems="center"
+                          className={classes.textListAlign}
+                        >
+                          <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            style={{
+                              display: "block",
+                              lineHeight: 2,
+                              wordWrap: "break-word",
+                              width: "100%",
+                            }}
+                          >
+                            {matches ? "" : "-"} {point}
+                          </Typography>
+                        </ListItem>
+                      );
+                    })}
+                  </List>
+                  <div className={classes.buttonsContainer}>
+                    {p.site ? (
+                      <Button
+                        size="small"
+                        className={classes.projectButton}
+                        variant="contained"
+                        color="primary"
+                        onClick={() => window.open(p.site)}
+                      >
+                        Visit Site <VisibilityIcon className={classes.icon}  />
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                    {p.video ? (
+                      <Button
+                        size="small"
+                        className={classes.projectButton}
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => window.open(p.video)}
+                      >
+                        Demo <YouTubeIcon className={classes.icon} />
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+
+                    <Button
+                      size="small"
+                      className={classes.projectButton}
+                      variant="contained"
+                      onClick={() => window.open(p.source)}
+                    >
+                      Code <GitHubIcon className={classes.icon} />
+                    </Button>
+                  </div>
+                </Box>
+              </Grid>
+            </Grid>
+            ;
+          </Box>
+        );
       })}
-     
-    
     </div>
   );
 }
-
 
 export default function ProjectList() {
   const classes = useStyles();

@@ -1,10 +1,12 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import {
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Grid,
+}from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
 import { INTROS } from "../data/data";
 import SectionTitle from './SectionTitle'
 import ContentHeader from './ContentHeader'
@@ -37,7 +39,7 @@ export default function Introduction() {
   const classes = useStyles();
   return (
     <div className={classes.introductionContainer}>
-     <SectionTitle title="What I'll bring to the table?"/>
+     <SectionTitle title="What I'll Bring To The Table"/>
 
       <Grid container spacing={5} className={classes.gridContainer}>
         {INTROS.map((data) => {
