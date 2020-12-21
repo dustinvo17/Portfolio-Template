@@ -74,13 +74,15 @@ export default function ContactForm() {
   } 
   const handleSubmit = (e) =>{
     e.preventDefault()
+    const body =  encode({
+        "form-name":"Dat Vo Portfolio Contact Form",
+        ...formData
+      })
+    console.log(body)
     fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": e.target.getAttribute("name"),
-          ...formData
-        })
+        body
       })
   }
   return (
