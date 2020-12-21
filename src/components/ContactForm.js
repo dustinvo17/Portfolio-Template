@@ -75,7 +75,7 @@ export default function ContactForm() {
   const handleSubmit = (e) =>{
     e.preventDefault()
     const body =  encode({
-        "form-name":"Dat Vo Portfolio Contact Form",
+        "form-name":"contactform",
         ...formData
       })
     console.log(body)
@@ -83,13 +83,14 @@ export default function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body
-      })
+      }).then(() => alert("Thank you for your message! I will get back to you ASAP!"))
+      .catch(() => alert("Oops! Some errors occurred when submit form! Please try again!"))
   }
   return (
     <Box textAlign="center">
       <SectionTitle title="How To Contact Me" />
       <ContentHeader description="The best way to reach out to me is by shooting me a message via my email: datvo.vtd@gmail.com. I'd love to hear from you!" />
-      <form data-netlify="true" name="Dat Vo Portfolio Contact Form" method="post" onSubmit={handleSubmit}>
+      <form  netlify data-netlify="true" name="Dat Vo Portfolio Contact Form" method="post" onSubmit={handleSubmit}>
       <input type="hidden" name="form-name" value="Dat Vo Portfolio Contact Form" />
         <Grid container spacing={3} style={{ padding: "20px" }}>
           <Grid item xs={12} sm={6}>
