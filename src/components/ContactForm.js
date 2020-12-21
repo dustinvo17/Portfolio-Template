@@ -79,7 +79,7 @@ export default function ContactForm() {
         ...formData
       })
     console.log(body)
-    fetch("/", {
+    fetch("/contact", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body

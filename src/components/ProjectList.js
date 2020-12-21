@@ -160,7 +160,7 @@ function TabPanel(props) {
                             {matches ? "" : "-"} {point}
                           </Typography>
                         </ListItem>
-                      );
+                      )
                     })}
                   </List>
                   <div className={classes.buttonsContainer}>
@@ -203,7 +203,6 @@ function TabPanel(props) {
                 </Box>
               </Grid>
             </Grid>
-            ;
           </Box>
         );
       })}
