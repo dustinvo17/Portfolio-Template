@@ -78,7 +78,6 @@ function TabPanel(props) {
   const classes = useStyles();
 
   const matches = useMediaQuery("(max-width:900px)");
-  console.log(matches);
   let projects;
   switch (value) {
     case 1:
@@ -219,7 +218,6 @@ export default function ProjectList() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setValue(newValue);
   };
   return (

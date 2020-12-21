@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom'
 import {
   Box,
   Button,
-  Container,
   Divider,
-  Paper,
   Avatar,
   Card,
   CardActions,
@@ -17,7 +16,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import GitHubIcon from "@material-ui/icons/GitHub"
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { LINKS } from "../data/data";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 const useStyles = makeStyles((theme) => ({
   boxBanner: {
     [theme.breakpoints.between(0,900)]: {
@@ -82,21 +81,21 @@ const useStyles = makeStyles((theme) => ({
 export default function Banner() {
   const [title, setTitle] = useState("");
   const [description, setDescripton] = useState("");
+  const location = useLocation();
   useEffect(() => {
-    const windowURL = window.location.href;
-    if (windowURL.includes("contact")) {
+    const {pathname} = location
+    if (pathname.includes("contact")) {
       setTitle("Contact Me");
       setDescripton("Wanna hire or collaborate with me? Let's talk!");
     }
-    if (windowURL.includes("projects")) {
+    if (pathname.includes("projects")) {
       setTitle("Projects");
       setDescripton("What kind of cool stuffs have I built? Check out below!");
     } else {
     }
-  }, []);
+  }, [location]);
   const classes = useStyles();
   const theme = useTheme();
-  console.log(theme.breakpoints)
   const renderSubPage = () => {
     return (
       <div
@@ -120,8 +119,8 @@ export default function Banner() {
 
   return (
     <Box boxShadow={4} color="text.primary"  className={classes.boxBanner}>
-      {window.location.href.includes("contact") ||
-      window.location.href.includes("projects") ? (
+      {location.pathname.includes("contact") ||
+      location.pathname.includes("projects") ? (
         renderSubPage()
       ) : (
         <React.Fragment>

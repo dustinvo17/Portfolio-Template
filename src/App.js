@@ -6,8 +6,8 @@ import Projects from './pages/Projects';
 import Header from './components/Header'
 import Container from '@material-ui/core/Container'
 import Banner from './components/Banner'
-function App() {
 
+function App() {
   return (
     <main>
       <Container maxWidth="lg">

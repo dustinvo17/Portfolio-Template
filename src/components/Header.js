@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Toolbar,
-  Link
-}  from "@material-ui/core"
-
-
+import { Link as RouterLink } from "react-router-dom";
+import { Toolbar, Typography } from "@material-ui/core";
+import {useLocation} from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
   toolbarSecondary: {
     borderBottom: `1px solid ${theme.palette.divider}`,
     justifyContent: "center",
     overflowX: "auto",
+    textDecoration: "none",
   },
   toolbarLink: {
     padding: theme.spacing(2),
@@ -20,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header(props) {
+  const location = useLocation()
   const sections = [
     { title: "HOME", url: "/" },
     { title: "PROJECTS", url: "/projects" },
@@ -34,15 +33,19 @@ export default function Header(props) {
         className={classes.toolbarSecondary}
       >
         {sections.map((section) => (
-          <Link
-            color="textSecondary"
+          <Typography
+            color={`${location.pathname === section.url ? 'primary' :'textSecondary'}`}
             key={section.title}
-            variant="body2"
-            href={section.url}
             className={classes.toolbarLink}
+            variant="body2"
           >
-            {section.title}
-          </Link>
+            <RouterLink
+              style={{ textDecoration: "none", color: "inherit" }}
+              to={section.url}
+            >
+              {section.title}
+            </RouterLink>
+          </Typography>
         ))}
       </Toolbar>
     </React.Fragment>

@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import {
   Button,
   Box,
-  TextareaAutosize,
   Grid,
-  Typography,
   TextField,
-  FormControlLabel,
-  FormControl,
 } from "@material-ui/core";
-
 import SectionTitle from "./SectionTitle";
 import ContentHeader from "./ContentHeader";
-import { TrainRounded } from "@material-ui/icons";
 export default function ContactForm() {
   const FIELD_TYPES = {
     EMAIL: "email",
