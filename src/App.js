@@ -1,12 +1,12 @@
 import {  Route, Switch } from 'react-router-dom';
-import React,{useEffect,useState} from 'react'
+import React from 'react'
 import HomePage from './pages/HomePage'
 import Contact from './pages/Contact'
 import Projects from './pages/Projects';
 import Header from './components/Header'
 import Container from '@material-ui/core/Container'
 import Banner from './components/Banner'
-
+import Footer from './components/Footer'
 function App() {
   return (
     <main>
@@ -18,6 +18,7 @@ function App() {
         <Route path="/contact" component={Contact} exact />
         <Route path="/projects" component={Projects} exact/>
       </Switch>
+      <Footer/>
       </Container>
    
     </main>
