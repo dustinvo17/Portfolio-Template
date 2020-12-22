@@ -10,6 +10,7 @@ import Banner from './components/Banner'
 function App() {
   return (
     <main>
+      {process.env.REACT_APP_USER_ID}
       <Container maxWidth="lg">
       <Header/>
       <Banner  />
