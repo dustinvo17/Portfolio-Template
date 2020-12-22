@@ -72,9 +72,9 @@ export default function ContactForm() {
   const handleSubmit = async (e) =>{
       e.preventDefault()
       const data ={ 
-        service_id: process.env.NODE_ENV.service_id,
-        template_id:  process.env.NODE_ENV.template_id,
-        user_id: process.env.NODE_ENV.user_id,
+        service_id: process.env.service_id,
+        template_id:  process.env.template_id,
+        user_id: process.env.user_id,
         template_params: {
           ...formData
         }
@@ -83,6 +83,11 @@ export default function ContactForm() {
       try {
         await axios.post('https://api.emailjs.com/api/v1.0/email/send',data)
         alert("Thank you for your message! I'll get back to you soon in 3 - 5 business days")
+        setData({
+          email:'',
+          name:'',
+          message:''
+      }) // clean up form
       }catch(err){
         alert("Ooops! Something wrong happened! Please try again or send directly email to me!")
       }
