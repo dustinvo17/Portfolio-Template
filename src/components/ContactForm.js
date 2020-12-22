@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core";
 import SectionTitle from "./SectionTitle";
 import ContentHeader from "./ContentHeader";
-import emailjs from 'emailjs-com';
 import axios from 'axios'
 export default function ContactForm() {
   const FIELD_TYPES = {
@@ -71,7 +70,6 @@ export default function ContactForm() {
   };
 
   const handleSubmit = async (e) =>{
-     const{email,name,message} = formData
       e.preventDefault()
       const data ={ 
         service_id: process.env.NODE_ENV.service_id,
