@@ -72,9 +72,9 @@ export default function ContactForm() {
   const handleSubmit = async (e) =>{
       e.preventDefault()
       const data ={ 
-        service_id: process.env.SERVICE_ID,
-        template_id:  process.env.TEMPLATE_ID,
-        user_id: process.env.USER_ID,
+        service_id: process.env.REACT_APP_SERVICE_ID,
+        template_id:  process.env.REACTP_APP_TEMPLATE_ID,
+        user_id: process.env.REACT_APP_USER_ID,
         template_params: {
           ...formData
         }
