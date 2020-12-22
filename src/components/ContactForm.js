@@ -7,6 +7,8 @@ import {
 } from "@material-ui/core";
 import SectionTitle from "./SectionTitle";
 import ContentHeader from "./ContentHeader";
+import emailjs from 'emailjs-com';
+import axios from 'axios'
 export default function ContactForm() {
   const FIELD_TYPES = {
     EMAIL: "email",
@@ -67,31 +69,31 @@ export default function ContactForm() {
     setData(data)
    
   };
-  const encode = (data) => { /// encode data to send to netlify form
-    return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&")
-  } 
-  const handleSubmit = (e) =>{
-  
-    const body =  encode({
-        "form-name":"contactform",
-        ...formData
-      })
-    console.log(body)
-    fetch("/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body
-      }).then(() => alert("Thank you for your message! I will get back to you ASAP!"))
-      .catch(() => alert("Oops! Some errors occurred when submit form! Please try again!"))
+
+  const handleSubmit = async (e) =>{
+     const{email,name,message} = formData
       e.preventDefault()
+      const data ={ 
+        service_id: process.env.NODE_ENV.service_id,
+        template_id:  process.env.NODE_ENV.template_id,
+        user_id: process.env.NODE_ENV.user_id,
+        template_params: {
+          ...formData
+        }
+       
+      }
+      try {
+        await axios.post('https://api.emailjs.com/api/v1.0/email/send',data)
+        alert("Thank you for your message! I'll get back to you soon in 3 - 5 business days")
+      }catch(err){
+        alert("Ooops! Something wrong happened! Please try again or send directly email to me!")
+      }
   }
   return (
     <Box textAlign="center">
       <SectionTitle title="How To Contact Me" />
       <ContentHeader description="The best way to reach out to me is by shooting me a message via my email: datvo.vtd@gmail.com. I'd love to hear from you!" />
-      <form  netlify data-netlify="true" name="contactform" method="post" onSubmit={handleSubmit}>
+      <form  name="contactform" method="post" onSubmit={handleSubmit}>
       <input type="hidden" name="form-name" value="contactform" />
         <Grid container spacing={3} style={{ padding: "20px" }}>
           <Grid item xs={12} sm={6}>
