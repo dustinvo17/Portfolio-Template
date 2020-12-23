@@ -64,7 +64,7 @@ export const PROJECTS_DATA = [
         "Shopify Theme Development",
         "https://amiewatch.myshopify.com/",
         "Developed a fully functional Shopify theme from scratch.",
-        ['UI development using HTML/CSS/Liquid.', 'Utilized VueJS and Shopify API to turn cart into single page application for improving user experience'],
+        ['UI development using HTML/CSS/SASS/Liquid.', 'Utilized VueJS and Shopify API to turn cart into single page application for improving user experience'],
         './images/amiewatch.png',
         'https://github.com/dustinvo17/AMIE-WATCHES'
     )
