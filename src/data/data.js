@@ -86,6 +86,15 @@ export const PROJECTS_DATA = [
         './images/quanart.png',
         'https://github.com/dustinvo17/artist-portfolio'
     ),
+    new ProjectData(
+        PROJECT_TYPE.FRONT_END,
+        "Shopify Theme Development",
+        "https://amiewatch.myshopify.com/",
+        "Developed a fully functional Shopify theme from scratch.",
+        ['UI development using HTML/CSS/SASS/Liquid.', 'Utilize VueJS and Shopify API to turn cart into single page application for improving user experience'],
+        './images/amiewatch.png',
+        'https://github.com/dustinvo17/AMIE-WATCHES'
+    )
     
     
     
