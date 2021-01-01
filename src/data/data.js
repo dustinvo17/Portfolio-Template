@@ -129,7 +129,7 @@ export const INTROS = [
     }
 ]
 export const LINKS = {
-    RESUME: 'https://drive.google.com/file/d/1ObommETYpJP_UHyvECA41xFOp8_C5Wce/view?usp=sharing',
+    RESUME: 'https://drive.google.com/file/d/1bgd-RcN0eYLBnG4hvr3kD2-CYSvHS3JG/view?usp=sharing',
     LINKEDIN: 'https://www.linkedin.com/in/dustintvo/',
     GITHUB :'https://github.com/dustinvo17' 
 }
