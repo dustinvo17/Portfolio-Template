@@ -51,7 +51,7 @@ export const PROJECTS_DATA = [
         PROJECT_TYPE.FULL_STACK,
         'Rate Businesses Nearby',
         'https://businesses-ratings.netlify.app/',
-        'Developed application that fetched and rendered businesses data near current location, and allow users to rate their businesses',
+        'Developed an application that fetched and rendered businesses data near current location, and allow user to rate those businesses',
         ['Setup firebase authentication + firestore as backend.','UI development in React/Redux/Netlify.'  
         ],
         './images/rating.png'
