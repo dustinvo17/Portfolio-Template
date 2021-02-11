@@ -49,6 +49,18 @@ export const PROJECTS_DATA = [
     ),
     new ProjectData(
         PROJECT_TYPE.FULL_STACK,
+        'Rate Businesses Nearby',
+        'https://businesses-ratings.netlify.app/',
+        'Developed application that fetched and rendered businesses data near current location, and allow users to rate their businesses',
+        ['Setup firebase authentication + firestore as backend.','UI development in React/Redux/Netlify.'  
+        ],
+        './images/rating.png'
+        ,
+        'https://github.com/dustinvo17/Rate-Businesses-Nearby'     
+
+    ),
+    new ProjectData(
+        PROJECT_TYPE.FULL_STACK,
         'Smart Canvas',
         null,
         'Developed a learning management system that aims to improve Computer Science students productivity.',
